@@ -1,15 +1,17 @@
-# 🚀 GitHub Project Template
+# 🐍 Python Project Template
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-A comprehensive GitHub repository template that provides the essential files and structure needed for any project, regardless of programming language. This template includes standard community health files, GitHub issue templates, and pull request templates to help you get started quickly with best practices for open source projects.
+A modern Python repository template that provides a solid foundation for your next Python project. This template follows the `src` layout for better package management and includes essential tools for development, testing, and CI/CD.
 
 ## ✨ Features
 
-- 🌍 **Language Agnostic**: Works for any programming language or project type
+- 🐍 **Python Focused**: Optimized for modern Python development (3.12+)
+- 📁 **Src Layout**: Follows [Python's recommended `src` layout](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/)
+- 📦 **Modern Dependency Management**: Powered by `uv` for lightning-fast package management
+- 🛠️ **Linting & Formatting**: Pre-configured with `ruff`
+- 🔧 **Modern Tooling**: Pre-configured development workflow tools including Lefthook, Mise, Cocogitto, and Act
 - 🏥 **Community Health Files**: Includes standard files for project governance
 - 🤝 **GitHub Integration**: Pre-configured issue and pull request templates
-- 🔧 **Modern Tooling**: Pre-configured development workflow tools including Lefthook, Mise, Cocogitto, and Act
-- 📁 **Structured**: Organized project layout with best practices
 
 ## 🚀 Quick Start
 
@@ -22,8 +24,8 @@ A comprehensive GitHub repository template that provides the essential files and
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/TheRealZurvan/github-project-template.git
-   cd github-project-template
+   git clone https://github.com/TheRealZurvan/python-project-template.git
+   cd python-project-template
    ```
 
 2. **Setup environment**:
@@ -31,8 +33,12 @@ A comprehensive GitHub repository template that provides the essential files and
    # Install mise (if not already installed)
    curl https://mise.run | sh
    
-   # Install configured tools (lefthook, cocogitto, act)
+   # Install configured tools (python, uv, ruff, lefthook, cocogitto, act)
    mise install
+   
+   # Set up Python virtual environment and dependencies
+   uv venv
+   uv sync
    
    # Set up Git hooks
    lefthook install
@@ -54,8 +60,11 @@ This command uses `.github/act/pull_request.json` to simulate a pull request eve
 
 ### 🔧 Development Tools
 
-- **Mise**: Ensures consistent tool versions (cocogitto, lefthook, act) across different environments.
-- **Lefthook**: Git hooks manager that runs checks before commits and pushes.
+- **Python**: The core programming language (version specified in `.tool-versions`).
+- **UV**: An extremely fast Python package and project manager, replacing `pip`, `pip-tools`, and `poetry`.
+- **Ruff**: An extremely fast Python linter and code formatter, written in Rust.
+- **Mise**: Ensures consistent tool versions (python, uv, ruff, cocogitto, lefthook, act) across different environments.
+- **Lefthook**: Git hooks manager that runs checks (like `ruff`) before commits and pushes.
 - **Cocogitto**: Enforces Conventional Commits and automates changelog generation.
 - **Act**: Runs GitHub Actions locally for faster feedback loops.
 
@@ -67,16 +76,24 @@ This project uses **Lefthook** for Git hooks and follows **Conventional Commits*
 
 ## 📁 Project Structure
 
+This project follows the [src layout](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/).
+
 ```
 .
 ├── .github/
 │   ├── ISSUE_TEMPLATE/    # Structured issue templates
 │   └── act/               # Local CI testing configuration
 ├── scripts/               # Helper scripts
+├── src/                   # Source code
+│   └── main.py            # Main entry point
+├── tests/                 # Test suite (if applicable)
+├── .lefthook.yml          # Git hooks configuration
+├── .tool-versions         # Mise tool versions
 ├── LICENSE                # Apache License 2.0
+├── pyproject.toml         # Python project configuration and dependencies
 ├── README.md              # You are here! 📍
 ├── SECURITY.md            # Security policy
-└── mise.toml              # Tool versions configuration
+└── mise.toml              # Mise tasks configuration
 ```
 
 ## ✏️ Customization Guide
